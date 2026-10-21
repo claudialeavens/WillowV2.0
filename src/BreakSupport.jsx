@@ -4,6 +4,7 @@ import { streamWillowMessage } from './openAIService';
 import { createAudioBlob, generateSpeech } from './textToSpeech';
 import { useVoiceOwnership } from './useVoiceOwnership';
 import { getResearchMessage, TURNER_THEMES_SOURCE } from './researchMessages';
+import willowVariant from './willowVariant.json';
 import {
   buildConversationSummary,
   createConversationId,
@@ -650,6 +651,21 @@ export const BreakSupport = ({
         </button>
       </div>
 
+      {isCoreConversation && willowVariant.showPromptGuidance && (
+        <aside className="phase-insight" aria-live="polite" aria-label="Willow phase assessment">
+          <p className="phase-insight-label">Prompt guidance preview</p>
+          {phaseAssessment ? (
+            <div className="phase-insight-content">
+              <span>{phaseAssessment.phase}</span>
+              <p>{phaseAssessment.strategy}</p>
+            </div>
+          ) : (
+            <p className="phase-insight-empty">
+              Willow’s phase and current strategy will appear here after the first response.
+            </p>
+          )}
+        </aside>
+      )}
     </section>
   );
 };
