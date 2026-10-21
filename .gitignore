@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+
+.env
+.env.*
+!.env.example
+
+*.log
+npm-debug.log*
+.vercel
+
+# Supabase local CLI cache
+supabase/.temp/
